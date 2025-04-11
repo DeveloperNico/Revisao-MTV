@@ -17,7 +17,7 @@ def criar_bruxo(request):
     return render(request, 'formulario.html', {'formulario': form})
 
 def atualizar_bruxo(request, pk):
-    personagem = get_object_or_404(pk=pk)
+    personagem = get_object_or_404(PersonagemHarryPotter, pk=pk)
     if request.method == 'POST':
         form = PersonagemForm(request.POST, instance=personagem)
         if form.is_valid():
@@ -26,3 +26,10 @@ def atualizar_bruxo(request, pk):
     else:
         form = PersonagemForm(instance=personagem)
     return render(request, 'formulario.html', {'formulario': form})
+
+def deletar_bruxo(request, pk):
+    personagem = get_object_or_404(PersonagemHarryPotter, pk=pk)
+    if request.method == 'POST':
+        personagem.delete()
+        return redirect('listar_personagem')
+    return render(request, 'confirmar_delete.html', {'personagem': personagem})

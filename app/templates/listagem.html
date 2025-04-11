@@ -51,6 +51,25 @@
         }
 
         /* Estilo para a lista de personagens */
+        .botao-atualizar {
+            text-decoration: none;
+            color: #fff;
+            background-color: #e2d411;
+            font-size: 1.2em;
+            width: 100px;
+            display: block;
+            text-align: center;
+            margin-left: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .botao-atualizar:hover {
+            background-color: #c4b70e
+        }
+
         .personagens-lista {
             list-style: none;
             padding: 0;
@@ -121,7 +140,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Lista de personagens de Harry Potter</h1>
+        <h1>Lista de personagens de Harry Potter</h1>   
         <a href="{% url 'criar_bruxo' %}">Criar Bruxo</a>
         <ul class="personagens-lista">
             {% for personagem in personagens %}
@@ -136,6 +155,7 @@
                     <div class="status {% if personagem.status %} status-ativo {% else %} status-inativo {% endif %}">
                         Status do Bruxo
                     </div>
+                    <a class="botao-atualizar" href="{% url 'atualizar_bruxo' personagem.id %}">Atualizar Bruxo</a>
                 </li>
             {% empty %}
                 <p class="caption"> Nenhum bruxo encontrado</p>
