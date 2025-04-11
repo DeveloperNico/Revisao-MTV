@@ -31,5 +31,5 @@ def deletar_bruxo(request, pk):
     personagem = get_object_or_404(PersonagemHarryPotter, pk=pk)
     if request.method == 'POST':
         personagem.delete()
-        return redirect('listar_personagem')
+        return redirect('listar_personagens')
     return render(request, 'confirmar_delete.html', {'personagem': personagem})

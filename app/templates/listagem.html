@@ -55,7 +55,26 @@
             text-decoration: none;
             color: #fff;
             background-color: #e2d411;
-            font-size: 1.2em;
+            font-size: 12.9px;
+            width: 100px;
+            display: block;
+            text-align: center;
+            margin-left: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: 0.3s ease-in-out;
+        }
+        
+        .botao-atualizar:hover {
+            background-color: #c4b70e;
+        }
+
+        .botao-deletar {
+            text-decoration: none;
+            color: #fff;
+            background-color: #e21111;
+            font-size: 12.9px;
             width: 100px;
             display: block;
             text-align: center;
@@ -66,8 +85,8 @@
             transition: 0.3s ease-in-out;
         }
 
-        .botao-atualizar:hover {
-            background-color: #c4b70e
+        .botao-deletar:hover {
+            background-color: #bd1010;
         }
 
         .personagens-lista {
@@ -150,12 +169,12 @@
                         <p class="animal">Animal de estimação: {{personagem.animal}}</p>
                         <p>Patrono: {{personagem.patrono}}</p>
                         <p class="casa">Casa: {{personagem.casa}}</p>
-
+                        <a class="botao-atualizar" href="{% url 'atualizar_bruxo' personagem.id %}">Atualizar Bruxo</a>
+                        <a class="botao-deletar" href="{% url 'deletar_bruxo' personagem.id %}">Deletar Bruxo</a>
                     </div>
                     <div class="status {% if personagem.status %} status-ativo {% else %} status-inativo {% endif %}">
                         Status do Bruxo
                     </div>
-                    <a class="botao-atualizar" href="{% url 'atualizar_bruxo' personagem.id %}">Atualizar Bruxo</a>
                 </li>
             {% empty %}
                 <p class="caption"> Nenhum bruxo encontrado</p>
